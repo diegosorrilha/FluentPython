@@ -7,7 +7,8 @@ Card = collections.namedtuple('Card', ['rank', 'suit'])
 # Por conta do metodo especial __len__, podemos usar len(deck) para 
 # pegar a qtdade de cartas
 # Por conta do metodo especial __getitem__, podemos pegar carta de qualquer
-# posicao com deck[0]
+# posicao com deck[0], além de iterar e verificar a existencia usando o 
+# operador `in`
 class FrenchDeck:
     ranks = [str(n) for n in range(2, 11)] + list('JQKA')
     suits = 'spades diamonds clubs hearts'.split()
@@ -22,8 +23,24 @@ class FrenchDeck:
     def __getitem__(self, position):
         return self._cards[position]
 
-# Exemplos de uso:
-# deck = FrenchDeck()
-# len(deck)
-# deck[-1]
-# choice[deck]
+
+print('''
+Exemplos de uso:
+>>> deck = FrenchDeck()
+
+>>> len(deck)
+
+>>> deck[-1]
+
+>>> choice[deck]
+
+>>> for card in deck:
+...     print(card)
+
+>>> Card('Q', 'hearts') in deck
+True
+
+>>> Card('Q', 'beasts') in deck
+False
+
+''')
